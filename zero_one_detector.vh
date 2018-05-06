@@ -1,5 +1,5 @@
 module zero_one_detector(input A, input clk, input rst, output Y);
-  reg [2:0] state, nextstate;
+  reg [1:0] state, nextstate;
   parameter S0 = 2'b00;
   parameter S1 = 2'b01;
   parameter S2 = 2'b10;
