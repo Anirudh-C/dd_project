@@ -5,9 +5,9 @@
 - Also write a test bench test_zero_one() to test the module. The test bench should clearly indicate the working of the detector.
 - Write a report with the input and output waveforms and the Verilog codes.
 
- ** Note: **
+ **Note:**
 
- ** Use idioms for the resettable flip-flop and label all states using parameter statements **
+ **Use idioms for the resettable flip-flop and label all states using parameter statements**
  
 2. Traffic Light Controller
 - Write a Verilog RTL module for a basic 4-state traffic_light_controller (without timeout).
@@ -20,6 +20,6 @@
 - Now modify the test bench to use teh LFSR's random outputs as the traffic sensor outputs.
 - Write a report with the input and output waveforms and the Verilog codes.
 
- ** Note: **
+ **Note:**
 
- ** Use idioms for the resettable flip-flop and label all states using typedef statements **
+ **Use idioms for the resettable flip-flop and label all states using typedef statements**
