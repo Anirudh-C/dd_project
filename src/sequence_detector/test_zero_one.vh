@@ -1,32 +1,53 @@
+`include "zero_one_detector.vh"
 module test_zero_one();
    reg clk, rst;
-   reg A;
+   reg A, Yexpected;
    wire Y;
-   // reg[15:0] i;
-   // reg [0:15] input_string;
    zero_one_detector dut(A,clk,rst,Y);
    always
      begin
-        clk = 1; #30; clk = 0; #30;
+        clk = 1; #5; clk = 0; #5;
      end
    initial begin
-      // input_string = 16'b0100000000000000;
-      // i = 0;
       rst = 1;
-      #31;
+      #6;
       rst=0;
-   end
-   always @ (posedge clk)
-     begin
-        A = input_string[i];
-     end
-   always @ (negedge clk)
-     if(~rst) begin
-        $display("A = %d; Y = %b",A,Y);
-        i = i + 1;
-        if (i === 16) begin
-           $display("Finished tests");
-           $finish;
-        end
+      A = 0; Yexpected = 0; #10;
+      if (Y !== Yexpected) begin
+          $display("E: A = %b, Yexpected = %b, Y = %b",A,Yexpected,Y);
+      end
+      else $display("D: A = %b, Yexpected = %b, Y = %b",A,Yexpected,Y);
+
+      A = 1; Yexpected = 1; #10;
+      if (Y !== Yexpected) begin
+          $display("E: A = %b, Yexpected = %b, Y = %b",A,Yexpected,Y);
+      end
+      else $display("D: A = %b, Yexpected = %b, Y = %b",A,Yexpected,Y);
+
+      A = 0; Yexpected = 0; #10;
+      if (Y !== Yexpected) begin
+          $display("E: A = %b, Yexpected = %b, Y = %b",A,Yexpected,Y);
+      end
+      else $display("D: A = %b, Yexpected = %b, Y = %b",A,Yexpected,Y);
+
+      A = 0; Yexpected = 0; #10;
+      if (Y !== Yexpected) begin
+          $display("E: A = %b, Yexpected = %b, Y = %b",A,Yexpected,Y);
+      end
+      else $display("D: A = %b, Yexpected = %b, Y = %b",A,Yexpected,Y);
+
+      A = 1; Yexpected = 1; #10;
+      if (Y !== Yexpected) begin
+          $display("E: A = %b, Yexpected = %b, Y = %b",A,Yexpected,Y);
+      end
+      else $display("D: A = %b, Yexpected = %b, Y = %b",A,Yexpected,Y);
+
+      A = 1; Yexpected = 0; #10;
+      if (Y !== Yexpected) begin
+          $display("E: A = %b, Yexpected = %b, Y = %b",A,Yexpected,Y);
+      end
+      else $display("D: A = %b, Yexpected = %b, Y = %b",A,Yexpected,Y);
+      $finish;
+
      end
 endmodule
