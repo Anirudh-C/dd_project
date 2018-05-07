@@ -1,9 +1,6 @@
 module traffic_light_controller(input TA, TB, clk, rst, output RA, YA, GA, RB, YB, GB);
-  reg [1:0] state, nextstate;
-  parameter S0 = 2'b00;
-  parameter S1 = 2'b01;
-  parameter S2 = 2'b10;
-  parameter S3 = 2'b11;
+  typedef enum logic [1:0] {S0, S1, S2, S3} statetype;
+  statetype [1:0] state, nextstate;
   always @ (posedge clk, posedge rst)
     if (rst) state <=  S0;
     else       state <= nextstate;
