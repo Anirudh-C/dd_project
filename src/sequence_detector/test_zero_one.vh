@@ -30,12 +30,6 @@ module test_zero_one();
       end
       else $display("D: A = %b, Yexpected = %b, Y = %b",A,Yexpected,Y);
 
-      A = 0; Yexpected = 0; #10;
-      if (Y !== Yexpected) begin
-          $display("E: A = %b, Yexpected = %b, Y = %b",A,Yexpected,Y);
-      end
-      else $display("D: A = %b, Yexpected = %b, Y = %b",A,Yexpected,Y);
-
       A = 1; Yexpected = 1; #10;
       if (Y !== Yexpected) begin
           $display("E: A = %b, Yexpected = %b, Y = %b",A,Yexpected,Y);
@@ -45,6 +39,18 @@ module test_zero_one();
       A = 1; Yexpected = 0; #10;
       if (Y !== Yexpected) begin
           $display("E: A = %b, Yexpected = %b, Y = %b",A,Yexpected,Y);
+      end
+      else $display("D: A = %b, Yexpected = %b, Y = %b",A,Yexpected,Y);
+
+      A = 0; Yexpected = 0; #10;
+      if (Y !== Yexpected) begin
+          $display("E: A = %b, Yexpected = %b, Y = %b",A,Yexpected,Y);
+      end
+      else $display("D: A = %b, Yexpected = %b, Y = %b",A,Yexpected,Y);
+
+      A = 0; Yexpected = 0; #10;
+      if (Y !== Yexpected) begin
+         $display("E: A = %b, Yexpected = %b, Y = %b",A,Yexpected,Y);
       end
       else $display("D: A = %b, Yexpected = %b, Y = %b",A,Yexpected,Y);
       $finish;
