@@ -102,11 +102,8 @@
 **** Controller Module
        #+BEGIN_SRC Verilog
           module traffic_light_controller(input TA, TB, clk, rst, output RA, YA, GA, RB, YB, GB);
-            reg [1:0] state, nextstate;
-            parameter S0 = 2'b00;
-            parameter S1 = 2'b01;
-            parameter S2 = 2'b10;
-            parameter S3 = 2'b11;
+            typedef enum logic [1:0] {S0,S1,S2,S3} statetype;
+            statetype state, nextstate;
             always @ (posedge clk, posedge rst)
               if (rst) state <=  S0;
               else       state <= nextstate;
@@ -147,7 +144,7 @@
                 else
                   begin
                       T1 = {T1[2:0],feedback1};
-                      T1 = {T1[2:0],feedback2};
+                      T2 = {T2[2:0],feedback2};
                   end
               end
           endmodule
@@ -316,9 +313,9 @@
      
      [[https://www.edaplayground.com/x/4vEy][Module]]
 
-     [[https://www.edaplayground.com/w/x/3Gs][Waveform]]
+     [[https://www.edaplayground.com/w/x/3tx][Waveform]]
 **** Waveform 3 (TLC with sensor)
 
      [[https://www.edaplayground.com/x/ie6][Module]]
      
-     [[https://www.edaplayground.com/w/x/3aQ][Waveform]]
+     [[https://www.edaplayground.com/w/x/cy][Waveform]]
