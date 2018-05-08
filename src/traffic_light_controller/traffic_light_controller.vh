@@ -26,16 +26,23 @@ module traffic_light_controller(input TA, TB, clk, rst, output RA, YA, GA, RB, Y
   assign GB = (state == S2);
 endmodule
 
-module Traffic_sensor(T, clk, rst);
-  output reg [4:0] T;
+module Traffic_sensor(T1, T2, clk, rst);
+  output reg [4:0] T1, T2;
   input clk, rst;
-  wire feedback;
-  assign feedback = {(~(T[4] ^ T[3])),(~(T[3] ^ T[2]))};
+  wire feedback1, feedback2;
+  assign feedback1 = {(~(T1[4] ^ T1[3])),(~(T1[3] ^ T1[2]))};
+  assign feedback2 = {(~(T1[4] ^ T1[3])),(~(T1[3] ^ T1[2]))};
   always @ (posedge clk, posedge rst)
     begin
       if (rst)
-        T = 5'b0;
+         begin
+            T1 = 5'b01101;
+            T2 = 5'b10110;
+         end
       else
-        T = {T[2:0],feedback};
+         begin
+            T1 = {T1[2:0],feedback1};
+            T1 = {T1[2:0],feedback2};
+         end
     end
 endmodule
