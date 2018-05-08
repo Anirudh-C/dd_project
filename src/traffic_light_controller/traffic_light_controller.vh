@@ -25,3 +25,17 @@ module traffic_light_controller(input TA, TB, clk, rst, output RA, YA, GA, RB, Y
   assign YB = (state == S3);
   assign GB = (state == S2);
 endmodule
+
+module Traffic_sensor(T, clk, rst);
+  output reg [4:0] T;
+  input clk, rst;
+  wire feedback;
+  assign feedback = {(~(T[4] ^ T[3])),(~(T[3] ^ T[2]))};
+  always @ (posedge clk, posedge rst)
+    begin
+      if (rst)
+        T = 5'b0;
+      else
+        T = {T[2:0],feedback};
+    end
+endmodule
